@@ -73,10 +73,16 @@ function App() {
   };
   return (
     <div className="App">
-      {referenceId ? <div>Thank you for the details. Your reference ID is {referenceId}</div> :
+      {referenceId ? 
+      <div>
+        <h2>SOCIAL ENTREPRENEURSHIP DEVELOPMENT PROGRAM 2024</h2>
+        Thank you for the details. Your reference ID is {referenceId}
+        </div> :
         <>
+        <span>
+            <h2>SOCIAL ENTREPRENEURSHIP DEVELOPMENT PROGRAM 2024</h2>
+        </span>
           <div>
-            <h2>Form</h2>
             <form>
               <label>
                 Full Name:
