@@ -190,14 +190,12 @@ function App() {
                           <option value="Usha Janome Rs.14500">Usha Janome Rs.14500</option>
                           <option value="Usha Power Rs.26000">Usha Power Rs.26000</option>
                         </select>
-
-
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <button disabled={(tableData.length == formData.number_of_beneficiary) || (!tableData[tableData.length - 1].name)} onClick={handleAddMore}>Add more</button>
+              <button disabled={(tableData.length == formData.number_of_beneficiary) || (!tableData[tableData.length - 1].name) || (!tableData[tableData.length - 1].product)} onClick={handleAddMore}>Add more</button>
               <button disabled={(tableData.length < 2)} onClick={handleRemove}>Remove</button>
             </div>
             : null}
