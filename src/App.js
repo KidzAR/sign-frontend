@@ -46,7 +46,7 @@ function App() {
     console.log('Form Data:', formData);
     console.log('Table Data:', tableData);
     try {
-      const response = await fetch('http://13.127.144.246:3500/api/users', {
+      const response = await fetch('https://sign2024.happykidz.co.in/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
