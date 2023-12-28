@@ -21,7 +21,7 @@ function App() {
     });
     if (field === 'number_of_beneficiary') {
       setTableData([
-        { number_of_beneficiary: e.target.value, name: '', mobile: '', address: '' },
+        { number_of_beneficiary: e.target.value, name: '', mobile: '', address: '', product: '' },
       ])
     }
   };
@@ -33,7 +33,7 @@ function App() {
   };
 
   const handleAddMore = () => {
-    setTableData((prevTableData) => [...prevTableData, { number_of_beneficiary: formData.number_of_beneficiary, name: '', mobile: '', address: '' }]);
+    setTableData((prevTableData) => [...prevTableData, { number_of_beneficiary: formData.number_of_beneficiary, name: '', mobile: '', address: '',  product: ''}]);
   };
 
   const handleRemove = () => {
@@ -106,7 +106,7 @@ function App() {
               </label>
               <br />
               <label>
-              Transaction Date:
+                Transaction Date:
                 <input
                   type="date"
                   value={formData.transaction_date}
@@ -135,7 +135,7 @@ function App() {
               </label>
             </form>
           </div>
-          {formData.number_of_beneficiary ?
+          {(formData.number_of_beneficiary && (JSON.parse(formData.number_of_beneficiary) > 0)) ?
             <div>
               <h2>Table</h2>
               <table>
@@ -144,6 +144,7 @@ function App() {
                     <th>Beneficiary Name</th>
                     <th>Beneficiary Mobile</th>
                     <th>Beneficiary Address</th>
+                    <th>Product</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -176,6 +177,22 @@ function App() {
                           }
                         />
                       </td>
+                      <td>
+                        <select id="dropdown" value={row.product} onChange={(e) =>
+                            handleTableCellChange(e, rowIndex, 'product')
+                          }
+                        >
+                          <option value="">Select...</option>
+                          <option value="Laptop Rs.40000">Laptop Rs.40000</option>
+                          <option value="Usha Machin Motor Rs.2000">Usha Machin Motor Rs.2000</option>
+                          <option value="Usha Delux Rs.7400">Usha Delux Rs.7400</option>
+                          <option value="Usha RSM Pro Rs.11000">Usha RSM Pro Rs.11000</option>
+                          <option value="Usha Janome Rs.14500">Usha Janome Rs.14500</option>
+                          <option value="Usha Power Rs.26000">Usha Power Rs.26000</option>
+                        </select>
+
+
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -190,7 +207,7 @@ function App() {
             !formData.transaction_id ||
             !formData.transaction_date ||
             !formData.number_of_beneficiary
-            )} onClick={handleSubmit}>Submit</button>
+          )} onClick={handleSubmit}>Submit</button>
         </>
       }
     </div>
