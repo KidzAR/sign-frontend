@@ -15,6 +15,20 @@ function App() {
   const [referenceId, setReferenceId] = useState('');
 
   const handleInputChange = (e, field) => {
+    const inputValue = e.target.value;
+
+    if (e.nativeEvent.inputType === 'deleteContentBackward') {
+      setFormData({
+        ...formData,
+        [field]: inputValue,
+      });
+      return;
+    }
+
+    // Validate if it's the 'mobile' field and the input is a valid number with a length of 10 or fewer characters
+    if (field === 'mobile' && (!/^\d+$/.test(inputValue) || inputValue.length > 10)) {
+      return; // Do not update state
+    }
     setFormData({
       ...formData,
       [field]: e.target.value,
@@ -97,7 +111,8 @@ function App() {
                 <label>
                   Mobile:
                   <input
-                    type="text"
+                    type="number"
+                    maxLength={10}
                     value={formData.mobile}
                     onChange={(e) => handleInputChange(e, 'mobile')}
                   />
